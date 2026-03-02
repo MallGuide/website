@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MallGuide | Interactive Mall and Street Directories</title>
+    <meta
+      name="description"
+      content="MallGuide helps teams build searchable mall and street directories with floor-aware layouts, AI-assisted tenant data, and clean mobile experiences."
+    />
+
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Sora:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              heading: ["Sora", "sans-serif"],
+              sans: ["DM Sans", "sans-serif"],
+            },
+            colors: {
+              "mg-ink": "#0F172A",
+              "mg-deep": "#111827",
+              "mg-mint": "#14B8A6",
+              "mg-sea": "#0EA5E9",
+              "mg-coral": "#F97316",
+              "mg-cream": "#FFF8EE",
+            },
+            animation: {
+              "float-soft": "float-soft 7s ease-in-out infinite",
+              "rise-in": "rise-in .8s cubic-bezier(0.16,1,0.3,1) forwards",
+              shimmer: "shimmer 6s linear infinite",
+            },
+            keyframes: {
+              "float-soft": {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-18px)" },
+              },
+              "rise-in": {
+                "0%": { opacity: "0", transform: "translateY(24px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+              shimmer: {
+                "0%": { backgroundPosition: "0% 50%" },
+                "100%": { backgroundPosition: "200% 50%" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body class="bg-mg-cream text-slate-800 antialiased selection:bg-mg-mint selection:text-white">
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300">
+      <div class="absolute inset-0 bg-white/75 backdrop-blur-md border-b border-white/40"></div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between py-4">
+          <a href="#" class="flex items-center gap-3">
+            <img src="assets/logo.svg" alt="MallGuide logo" class="h-10 w-10" />
+            <span class="font-heading font-bold text-xl text-mg-ink tracking-tight">MallGuide</span>
+          </a>
+
+          <div class="hidden md:flex items-center gap-8">
+            <a href="#about" class="nav-link">About</a>
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#how-it-works" class="nav-link">How It Works</a>
+            <a href="#use-cases" class="nav-link">Use Cases</a>
+            <a href="#faq" class="nav-link">FAQ</a>
+          </div>
+
+          <div class="hidden md:flex items-center gap-3">
+            <a href="https://linkedin.com/company/mallguide/" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl font-semibold text-slate-700 hover:text-mg-mint transition-colors">
+              Contact
+            </a>
+            <a href="https://app.mallguide.online" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl font-semibold text-white bg-gradient-to-r from-mg-mint to-mg-sea hover:shadow-lg transition-all">
+              Open App
+            </a>
+          </div>
+
+          <button
+            id="mobile-menu-button"
+            class="md:hidden p-2 rounded-lg border border-slate-200 bg-white"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <svg class="w-6 h-6 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="hidden md:hidden absolute w-full bg-white/95 backdrop-blur-lg border-b border-slate-100 shadow-lg">
+        <div class="px-4 py-5 space-y-3">
+          <a href="#about" class="mobile-link">About</a>
+          <a href="#features" class="mobile-link">Features</a>
+          <a href="#how-it-works" class="mobile-link">How It Works</a>
+          <a href="#use-cases" class="mobile-link">Use Cases</a>
+          <a href="#faq" class="mobile-link">FAQ</a>
+          <a href="https://linkedin.com/company/mallguide/" target="_blank" rel="noopener noreferrer" class="mobile-link">Contact</a>
+          <a href="https://app.mallguide.online" target="_blank" rel="noopener noreferrer" class="block text-center rounded-xl py-3 font-semibold text-white bg-gradient-to-r from-mg-mint to-mg-sea">
+            Open App
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <button id="scrollUpBtn" aria-label="Scroll to top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 15l7-7 7 7" />
+      </svg>
+    </button>
+
+    <section class="relative min-h-screen overflow-hidden bg-mg-ink text-white flex items-center">
+      <div class="absolute inset-0 bg-grid-pattern opacity-30"></div>
+      <div class="absolute -top-20 -left-20 h-80 w-80 rounded-full bg-mg-mint/20 blur-3xl animate-float-soft"></div>
+      <div class="absolute -bottom-24 -right-10 h-96 w-96 rounded-full bg-mg-coral/20 blur-3xl animate-float-soft" style="animation-delay: 1.2s"></div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
+        <div class="grid lg:grid-cols-2 gap-14 items-center">
+          <div>
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-white/10 backdrop-blur-md mb-7 animate-rise-in">
+              <span class="h-2 w-2 rounded-full bg-mg-mint"></span>
+              <span class="text-sm font-semibold uppercase tracking-wide text-mg-mint">Mall + Street Directory Platform</span>
+            </div>
+
+            <h1 class="font-heading text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 animate-rise-in" style="animation-delay:.12s">
+              Organize Real Places for
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-mg-mint to-mg-sea">Real Visitors</span>
+            </h1>
+
+            <p class="text-xl text-slate-300 leading-relaxed max-w-2xl animate-rise-in" style="animation-delay:.22s">
+              MallGuide helps teams create searchable mall and street guides with floor-aware editors, smart categorization, and pages that work cleanly on mobile.
+            </p>
+
+            <div class="mt-9 flex flex-col sm:flex-row gap-4 animate-rise-in" style="animation-delay:.32s">
+              <a href="https://app.mallguide.online" target="_blank" rel="noopener noreferrer" class="px-7 py-4 rounded-xl bg-mg-mint text-mg-ink font-bold hover:bg-teal-300 transition-colors text-center">
+                Open App
+              </a>
+              <a href="#features" class="px-7 py-4 rounded-xl border border-white/25 bg-white/10 backdrop-blur-sm text-white font-semibold hover:bg-white/20 transition-colors text-center">
+                Explore Features
+              </a>
+            </div>
+          </div>
+
+          <div class="relative hidden lg:block">
+            <div class="mockup-shell rounded-3xl p-5 bg-white/10 border border-white/25 backdrop-blur-xl shadow-2xl">
+              <div class="rounded-2xl bg-slate-900/85 border border-white/10 p-4">
+                <div class="flex items-center justify-between pb-4 border-b border-white/10">
+                  <div>
+                    <p class="text-xs uppercase tracking-wide text-slate-400">Directory View</p>
+                    <h3 class="font-heading text-xl font-semibold text-white">Riverstone Mall</h3>
+                  </div>
+                  <span class="px-3 py-1 text-xs font-bold rounded-full bg-mg-mint/20 text-mg-mint">Live</span>
+                </div>
+                <div class="mt-4 grid grid-cols-2 gap-3">
+                  <div class="mini-card">
+                    <p class="mini-kicker">Floors</p>
+                    <p class="mini-number">4</p>
+                  </div>
+                  <div class="mini-card">
+                    <p class="mini-kicker">Stores</p>
+                    <p class="mini-number">183</p>
+                  </div>
+                  <div class="mini-card col-span-2">
+                    <p class="mini-kicker">Search</p>
+                    <p class="text-sm text-slate-300">"coffee", "parking", "phone repair"</p>
+                  </div>
+                </div>
+                <div class="mt-4 h-36 rounded-xl bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 bg-[length:200%_200%] animate-shimmer border border-white/10"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <p class="section-kicker text-mg-coral">Why MallGuide</p>
+          <h2 class="section-title text-mg-ink">From Floor Plans to Findable Information</h2>
+          <p class="section-copy">
+            MallGuide combines content, structure, and navigation so visitors can quickly locate stores and services, while teams keep data current across malls and street zones.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <article class="stat-card reveal">
+            <p class="stat-value">3 Views</p>
+            <p class="stat-label">List, grid, and image floor editors for different mapping needs.</p>
+          </article>
+          <article class="stat-card reveal">
+            <p class="stat-value">15-25</p>
+            <p class="stat-label">AI-suggested store records generated per floor seed request.</p>
+          </article>
+          <article class="stat-card reveal">
+            <p class="stat-value">1 Stack</p>
+            <p class="stat-label">Firebase-first architecture for web app, API, and admin tools.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="py-24 bg-mg-cream relative overflow-hidden">
+      <div class="absolute top-0 right-0 h-[420px] w-[420px] rounded-full bg-mg-sea/10 blur-3xl translate-x-1/3 -translate-y-1/3"></div>
+      <div class="absolute bottom-0 left-0 h-[420px] w-[420px] rounded-full bg-mg-coral/10 blur-3xl -translate-x-1/3 translate-y-1/3"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <p class="section-kicker text-mg-sea">Platform Features</p>
+          <h2 class="section-title text-mg-ink">Everything Needed to Run a Modern Directory</h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <article class="feature-card reveal">
+            <h3 class="feature-title">Floor Editors That Fit the Space</h3>
+            <p class="feature-text">Switch between list, grid, and image editors based on how each level is documented.</p>
+          </article>
+          <article class="feature-card reveal">
+            <h3 class="feature-title">Street Guide Mode</h3>
+            <p class="feature-text">Model storefronts and businesses for open-air districts and mixed-use corridors.</p>
+          </article>
+          <article class="feature-card reveal">
+            <h3 class="feature-title">AI Tenant Generation</h3>
+            <p class="feature-text">Generate realistic first-pass tenant lists to accelerate onboarding of new properties.</p>
+          </article>
+          <article class="feature-card reveal">
+            <h3 class="feature-title">Search + Category Filters</h3>
+            <p class="feature-text">Visitors can quickly find stores by name, description, floor, and category.</p>
+          </article>
+          <article class="feature-card reveal">
+            <h3 class="feature-title">Favourites and Engagement</h3>
+            <p class="feature-text">Users can save malls and guides they revisit often, improving repeat discovery.</p>
+          </article>
+          <article class="feature-card reveal">
+            <h3 class="feature-title">API and Admin Ready</h3>
+            <p class="feature-text">Backed by authenticated REST endpoints for managing malls, floors, stores, and businesses.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="py-24 bg-mg-deep text-white relative overflow-hidden">
+      <div class="absolute top-10 left-12 h-44 w-44 rounded-full bg-mg-mint/20 blur-3xl"></div>
+      <div class="absolute bottom-10 right-12 h-52 w-52 rounded-full bg-mg-sea/20 blur-3xl"></div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-14">
+          <p class="section-kicker text-mg-mint">How It Works</p>
+          <h2 class="section-title text-white">Launch and Maintain Guides in Three Steps</h2>
+        </div>
+        <div class="grid lg:grid-cols-3 gap-6">
+          <article class="step-card reveal">
+            <p class="step-number">01</p>
+            <h3 class="step-title">Create the Place</h3>
+            <p class="step-text">Add a mall or street, define location details, and structure floors or blocks.</p>
+          </article>
+          <article class="step-card reveal">
+            <p class="step-number">02</p>
+            <h3 class="step-title">Populate Stores</h3>
+            <p class="step-text">Enter tenants manually, import candidates, or seed records with AI assistance.</p>
+          </article>
+          <article class="step-card reveal">
+            <p class="step-number">03</p>
+            <h3 class="step-title">Publish + Iterate</h3>
+            <p class="step-text">Deliver searchable pages for visitors, then refine details as occupancy changes.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="use-cases" class="py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <p class="section-kicker text-mg-coral">Who Uses MallGuide</p>
+          <h2 class="section-title text-mg-ink">Built for Operators, Teams, and Communities</h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <article class="audience-card reveal">
+            <h3 class="audience-title">Mall Operators</h3>
+            <p class="audience-copy">Keep tenant listings current and reduce visitor friction.</p>
+          </article>
+          <article class="audience-card reveal">
+            <h3 class="audience-title">Leasing Teams</h3>
+            <p class="audience-copy">Surface availability context and category balance by floor.</p>
+          </article>
+          <article class="audience-card reveal">
+            <h3 class="audience-title">City Programs</h3>
+            <p class="audience-copy">Publish high-quality street guides for local business districts.</p>
+          </article>
+          <article class="audience-card reveal">
+            <h3 class="audience-title">Shoppers</h3>
+            <p class="audience-copy">Find what they need quickly across complex physical environments.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 bg-gradient-to-r from-teal-600 to-sky-600 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <p class="section-kicker text-white/80">What Teams Say</p>
+          <h2 class="section-title text-white">Faster Directory Workflows, Better Visitor Discovery</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+          <article class="quote-card reveal">
+            <p class="quote-text">"We replaced stale PDF maps with a live guide our visitors actually use."</p>
+            <p class="quote-author">Operations Lead, Regional Mall Group</p>
+          </article>
+          <article class="quote-card reveal">
+            <p class="quote-text">"The image editor made it easy to align stores to our floor plan with almost no training."</p>
+            <p class="quote-author">Directory Manager, City Centre</p>
+          </article>
+          <article class="quote-card reveal">
+            <p class="quote-text">"AI seeding gave our team a solid first draft for new properties in minutes."</p>
+            <p class="quote-author">Product Owner, Multi-site Retail Network</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="py-20 bg-mg-cream">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl sm:text-4xl font-heading font-bold text-center text-mg-ink mb-10">Frequently Asked Questions</h2>
+        <div class="space-y-4">
+          <article class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Is MallGuide only for malls?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>MallGuide supports both mall directories and street-based guides, so teams can model enclosed and open-air spaces.</p>
+            </div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Can we map store positions visually?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes. You can manage positions with list ordering, grid areas, or image-based pin placement depending on your floor data quality.</p>
+            </div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Do you provide API access?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>The platform includes authenticated REST endpoints for malls, floors, stores, street guides, and businesses.</p>
+            </div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Can teams collaborate on updates?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes. Role-based access lets admins and editors collaborate while keeping sensitive operations protected.</p>
+            </div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-question" type="button">
+              <span>How do we get started?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Reach out via email and we can set up a walkthrough based on your current directory workflow.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-mg-ink text-white relative overflow-hidden">
+      <div class="absolute top-0 left-0 h-full w-full bg-grid-pattern opacity-20"></div>
+      <div class="relative max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h2 class="text-4xl sm:text-5xl font-heading font-extrabold mb-5">Ready to Build Better Place Discovery?</h2>
+        <p class="text-xl text-slate-300 mb-9">See how MallGuide fits malls, mixed-use spaces, and city street programs.</p>
+        <a href="https://linkedin.com/company/mallguide/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl bg-mg-mint text-mg-ink font-bold hover:bg-teal-300 transition-colors text-lg">
+          linkedin.com/company/mallguide/
+        </a>
+      </div>
+    </section>
+
+    <footer class="bg-slate-950 text-slate-300 py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <div class="flex items-center gap-3 mb-3">
+              <img src="assets/logo.svg" alt="MallGuide" class="h-10 w-10" />
+              <span class="font-heading font-bold text-xl text-white">MallGuide</span>
+            </div>
+            <p class="text-slate-400">Interactive directories for malls and streets.</p>
+            <p class="text-slate-500 mt-3">&copy; 2026 MallGuide. All rights reserved.</p>
+          </div>
+          <div>
+            <h3 class="font-heading text-white font-semibold mb-3">Product</h3>
+            <ul class="space-y-2">
+              <li><a href="#features" class="footer-link">Features</a></li>
+              <li><a href="#how-it-works" class="footer-link">How It Works</a></li>
+              <li><a href="#use-cases" class="footer-link">Use Cases</a></li>
+              <li><a href="#faq" class="footer-link">FAQ</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-heading text-white font-semibold mb-3">Legal</h3>
+            <ul class="space-y-2">
+              <li><a href="terms.html" class="footer-link">Terms of Use</a></li>
+              <li><a href="privacy.html" class="footer-link">Privacy Policy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="MallGuide logo">
+  <defs>
+    <linearGradient id="mgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14B8A6" />
+      <stop offset="100%" stop-color="#0EA5E9" />
+    </linearGradient>
+  </defs>
+  <rect x="40" y="40" width="432" height="432" rx="110" fill="#0F172A" />
+  <path d="M256 104c-62.96 0-114 51.04-114 114 0 87.4 98.48 166.87 108.58 174.84a8.2 8.2 0 0 0 10.84 0C271.52 384.87 370 305.4 370 218c0-62.96-51.04-114-114-114Zm0 158a44 44 0 1 1 0-88 44 44 0 0 1 0 88Z" fill="url(#mgGradient)" />
+  <path d="M176 316h160v78a14 14 0 0 1-14 14H190a14 14 0 0 1-14-14v-78Z" fill="#FFF8EE" />
+  <path d="M176 316h160l-80-48-80 48Z" fill="#F97316" />
+</svg>
