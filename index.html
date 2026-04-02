@@ -421,41 +421,41 @@
             class="demo-map-card bg-gradient-to-br from-gray-50 to-blue-50 rounded-3xl p-4 sm:p-8 shadow-2xl"
           >
             <div
-              class="demo-map-header flex items-center justify-between gap-3 mb-6"
+              class="demo-map-header flex flex-wrap sm:flex-nowrap items-start sm:items-center justify-between gap-3 mb-6"
             >
               <h3 class="text-xl sm:text-2xl font-bold text-gray-900">
                 Riverstone Mall
               </h3>
               <span
-                class="demo-live-badge px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-semibold"
+                class="demo-live-badge ml-auto sm:ml-0 px-3 py-1.5 sm:px-4 sm:py-2 bg-green-100 text-green-700 rounded-full text-xs sm:text-sm font-semibold"
                 >Live</span
               >
             </div>
 
             <!-- Floor Selector -->
             <div
-              class="demo-floor-selector flex gap-2 mb-6 overflow-x-auto pb-2"
+              class="demo-floor-selector grid grid-cols-2 sm:flex gap-2 mb-6"
             >
               <button
-                class="floor-tab demo-floor-tab active px-6 py-3 rounded-lg font-semibold whitespace-nowrap"
+                class="floor-tab demo-floor-tab active w-full sm:w-auto px-3 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold"
                 onclick="selectFloor(1, this)"
               >
                 Floor 1
               </button>
               <button
-                class="floor-tab demo-floor-tab px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold whitespace-nowrap"
+                class="floor-tab demo-floor-tab w-full sm:w-auto px-3 sm:px-6 py-2.5 sm:py-3 bg-gray-200 text-gray-700 rounded-lg text-sm sm:text-base font-semibold"
                 onclick="selectFloor(2, this)"
               >
                 Floor 2
               </button>
               <button
-                class="floor-tab demo-floor-tab px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold whitespace-nowrap"
+                class="floor-tab demo-floor-tab w-full sm:w-auto px-3 sm:px-6 py-2.5 sm:py-3 bg-gray-200 text-gray-700 rounded-lg text-sm sm:text-base font-semibold"
                 onclick="selectFloor(3, this)"
               >
                 Floor 3
               </button>
               <button
-                class="floor-tab demo-floor-tab px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold whitespace-nowrap"
+                class="floor-tab demo-floor-tab w-full sm:w-auto px-3 sm:px-6 py-2.5 sm:py-3 bg-gray-200 text-gray-700 rounded-lg text-sm sm:text-base font-semibold"
                 onclick="selectFloor(4, this)"
               >
                 Floor 4
@@ -2102,8 +2102,15 @@
 
           e.preventDefault();
 
-          const navHeight = navbar ? navbar.offsetHeight : 0;
+          const navTopRow = document.querySelector("nav .h-16");
+          const navHeight = navTopRow ? navTopRow.offsetHeight : 64;
           const extraGap = 12;
+
+          // Avoid using expanded mobile dropdown height in anchor calculations.
+          if (mobileMenu && !mobileMenu.classList.contains("hidden")) {
+            closeMobileMenu();
+          }
+
           const targetTop =
             target.getBoundingClientRect().top +
             window.scrollY -
