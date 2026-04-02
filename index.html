@@ -1,185 +1,686 @@
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MallGuide | Interactive Mall and Street Directories</title>
+    <title>MallGuide | Interactive Mall Maps & Store Directories</title>
     <meta
       name="description"
-      content="MallGuide helps teams build searchable mall and street directories with floor-aware layouts, AI-assisted tenant data, and clean mobile experiences."
+      content="Navigate malls effortlessly with interactive floor maps, real-time store directories, and smart search. Find any store, restaurant, or service in seconds."
     />
 
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Sora:wght@400;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              heading: ["Sora", "sans-serif"],
-              sans: ["DM Sans", "sans-serif"],
-            },
-            colors: {
-              "mg-ink": "#0F172A",
-              "mg-deep": "#111827",
-              "mg-mint": "#14B8A6",
-              "mg-sea": "#0EA5E9",
-              "mg-coral": "#F97316",
-              "mg-cream": "#FFF8EE",
-            },
-            animation: {
-              "float-soft": "float-soft 7s ease-in-out infinite",
-              "rise-in": "rise-in .8s cubic-bezier(0.16,1,0.3,1) forwards",
-              shimmer: "shimmer 6s linear infinite",
-            },
-            keyframes: {
-              "float-soft": {
-                "0%, 100%": { transform: "translateY(0)" },
-                "50%": { transform: "translateY(-18px)" },
-              },
-              "rise-in": {
-                "0%": { opacity: "0", transform: "translateY(24px)" },
-                "100%": { opacity: "1", transform: "translateY(0)" },
-              },
-              shimmer: {
-                "0%": { backgroundPosition: "0% 50%" },
-                "100%": { backgroundPosition: "200% 50%" },
-              },
-            },
-          },
-        },
-      };
-    </script>
-
-    <link rel="stylesheet" href="css/styles.css" />
   </head>
-
-  <body class="bg-mg-cream text-slate-800 antialiased selection:bg-mg-mint selection:text-white">
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300">
-      <div class="absolute inset-0 bg-white/75 backdrop-blur-md border-b border-white/40"></div>
-      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between py-4">
-          <a href="#" class="flex items-center gap-3">
-            <img src="assets/logo.svg" alt="MallGuide logo" class="h-10 w-10" />
-            <span class="font-heading font-bold text-xl text-mg-ink tracking-tight">MallGuide</span>
-          </a>
-
-          <div class="hidden md:flex items-center gap-8">
-            <a href="#about" class="nav-link">About</a>
-            <a href="#features" class="nav-link">Features</a>
-            <a href="#how-it-works" class="nav-link">How It Works</a>
-            <a href="#use-cases" class="nav-link">Use Cases</a>
-            <a href="#faq" class="nav-link">FAQ</a>
+  <body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/95 backdrop-blur-md shadow-sm z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center">
+            <img
+              src="assets/logo.svg"
+              alt="MallGuide Logo"
+              class="h-10 w-auto"
+            />
           </div>
+          <div class="hidden md:flex space-x-8">
+            <a
+              href="#about"
+              class="text-gray-700 hover:text-teal-600 transition-colors font-medium"
+              >About</a
+            >
+            <a
+              href="#how-it-works"
+              class="text-gray-700 hover:text-teal-600 transition-colors font-medium"
+              >How It Works</a
+            >
+            <a
+              href="#features"
+              class="text-gray-700 hover:text-teal-600 transition-colors font-medium"
+              >Features</a
+            >
+            <a
+              href="#use-cases"
+              class="text-gray-700 hover:text-teal-600 transition-colors font-medium"
+              >Use Cases</a
+            >
+            <a
+              href="#faq"
+              class="text-gray-700 hover:text-teal-600 transition-colors font-medium"
+              >FAQ</a
+            >
+          </div>
+          <div class="flex items-center space-x-4">
+            <a
+              href="https://linkedin.com/company/mallguide/"
+              class="text-gray-700 hover:text-teal-600 transition-colors font-medium"
+              >Contact</a
+            >
 
-          <div class="hidden md:flex items-center gap-3">
-            <a href="https://linkedin.com/company/mallguide/" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl font-semibold text-slate-700 hover:text-mg-mint transition-colors">
-              Contact
-            </a>
-            <a href="https://app.mallguide.online" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl font-semibold text-white bg-gradient-to-r from-mg-mint to-mg-sea hover:shadow-lg transition-all">
+            <a
+              href="https://app.mallguide.online/"
+              target="_blank"
+              class="hidden sm:inline-block px-6 py-2 bg-gradient-to-r from-teal-500 to-blue-500 text-white rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105 font-semibold"
+            >
               Open App
             </a>
           </div>
-
-          <button
-            id="mobile-menu-button"
-            class="md:hidden p-2 rounded-lg border border-slate-200 bg-white"
-            aria-expanded="false"
-            aria-controls="mobile-menu"
-          >
-            <svg class="w-6 h-6 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <div id="mobile-menu" class="hidden md:hidden absolute w-full bg-white/95 backdrop-blur-lg border-b border-slate-100 shadow-lg">
-        <div class="px-4 py-5 space-y-3">
-          <a href="#about" class="mobile-link">About</a>
-          <a href="#features" class="mobile-link">Features</a>
-          <a href="#how-it-works" class="mobile-link">How It Works</a>
-          <a href="#use-cases" class="mobile-link">Use Cases</a>
-          <a href="#faq" class="mobile-link">FAQ</a>
-          <a href="https://linkedin.com/company/mallguide/" target="_blank" rel="noopener noreferrer" class="mobile-link">Contact</a>
-          <a href="https://app.mallguide.online" target="_blank" rel="noopener noreferrer" class="block text-center rounded-xl py-3 font-semibold text-white bg-gradient-to-r from-mg-mint to-mg-sea">
-            Open App
-          </a>
         </div>
       </div>
     </nav>
 
-    <button id="scrollUpBtn" aria-label="Scroll to top">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 15l7-7 7 7" />
-      </svg>
-    </button>
+    <!-- Hero Section -->
+    <section
+      class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
+    >
+      <!-- Background Image -->
+      <div class="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1670014493554-5e872c0bec16"
+          alt="Modern Shopping Mall Interior"
+          class="w-full h-full object-cover"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-teal-900/95 via-cyan-900/90 to-blue-900/95"
+        ></div>
+      </div>
 
-    <section class="relative min-h-screen overflow-hidden bg-mg-ink text-white flex items-center">
-      <div class="absolute inset-0 bg-grid-pattern opacity-30"></div>
-      <div class="absolute -top-20 -left-20 h-80 w-80 rounded-full bg-mg-mint/20 blur-3xl animate-float-soft"></div>
-      <div class="absolute -bottom-24 -right-10 h-96 w-96 rounded-full bg-mg-coral/20 blur-3xl animate-float-soft" style="animation-delay: 1.2s"></div>
+      <!-- Hero Content -->
+      <div
+        class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+      >
+        <div class="fade-in-up">
+          <div
+            class="inline-flex items-center px-4 py-2 mb-6 text-sm font-semibold text-white bg-white/20 backdrop-blur-md rounded-full border border-white/30"
+          >
+            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                fill-rule="evenodd"
+                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            Interactive Mall Maps & Directories
+          </div>
 
-      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
-        <div class="grid lg:grid-cols-2 gap-14 items-center">
+          <h1
+            class="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight"
+          >
+            Find Any Store<br />
+            <span
+              class="bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent"
+            >
+              In Seconds
+            </span>
+          </h1>
+
+          <p
+            class="text-xl md:text-2xl text-gray-200 mb-10 max-w-3xl mx-auto leading-relaxed"
+          >
+            Navigate shopping malls with
+            <span class="font-bold text-white">interactive floor maps</span>,
+            real-time store directories, and smart search. Never get lost in a
+            mall again.
+          </p>
+
+          <!-- Search Demo -->
+          <div class="max-w-2xl mx-auto mb-10">
+            <div class="relative">
+              <input
+                type="text"
+                placeholder="Try searching: 'Coffee shop', 'Nike', 'Parking'..."
+                class="w-full px-6 py-5 pr-32 rounded-full text-lg focus:outline-none search-bar transition-all"
+                id="heroSearch"
+              />
+              <button
+                class="absolute right-2 top-1/2 transform -translate-y-1/2 px-6 py-3 bg-gradient-to-r from-teal-500 to-blue-500 text-white rounded-full font-semibold hover:shadow-lg transition-all"
+              >
+                Search
+              </button>
+            </div>
+            <p class="text-sm text-gray-300 mt-3">
+              🔥 Try it now - instant results across all floors
+            </p>
+          </div>
+
+          <div
+            class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
+          >
+            <a
+              href="#demo"
+              class="px-8 py-4 bg-white text-blue-600 rounded-full font-semibold text-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+            >
+              View Live Demo
+            </a>
+          </div>
+        </div>
+
+        <!-- Feature Highlights -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div class="glass rounded-2xl p-6">
+            <div
+              class="w-12 h-12 bg-teal-500 rounded-lg flex items-center justify-center mb-4 mx-auto"
+            >
+              <svg
+                class="w-6 h-6 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-white font-bold text-lg mb-2">
+              Interactive Floor Maps
+            </h3>
+            <p class="text-gray-300 text-sm">
+              Visual floor plans with pinpoint store locations
+            </p>
+          </div>
+
+          <div class="glass rounded-2xl p-6">
+            <div
+              class="w-12 h-12 bg-cyan-500 rounded-lg flex items-center justify-center mb-4 mx-auto"
+            >
+              <svg
+                class="w-6 h-6 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-white font-bold text-lg mb-2">Smart Search</h3>
+            <p class="text-gray-300 text-sm">
+              Find stores by name, category, or floor instantly
+            </p>
+          </div>
+
+          <div class="glass rounded-2xl p-6">
+            <div
+              class="w-12 h-12 bg-pink-500 rounded-lg flex items-center justify-center mb-4 mx-auto"
+            >
+              <svg
+                class="w-6 h-6 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-white font-bold text-lg mb-2">Mobile First</h3>
+            <p class="text-gray-300 text-sm">
+              Works perfectly on your smartphone
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-white/10 backdrop-blur-md mb-7 animate-rise-in">
-              <span class="h-2 w-2 rounded-full bg-mg-mint"></span>
-              <span class="text-sm font-semibold uppercase tracking-wide text-mg-mint">Mall + Street Directory Platform</span>
+            <div
+              class="inline-block px-4 py-2 bg-teal-100 text-teal-700 rounded-full text-sm font-semibold mb-4"
+            >
+              About MallGuide
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Revolutionizing<br />
+              <span
+                class="bg-gradient-to-r from-teal-500 to-blue-500 bg-clip-text text-transparent"
+              >
+                Mall Navigation
+              </span>
+            </h2>
+            <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+              MallGuide is the leading platform for interactive mall and street
+              directories. We help shoppers find stores instantly while
+              empowering mall operators with powerful tools to manage and update
+              their directories in real-time.
+            </p>
+            <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+              With over 500 malls listed and 50,000+ stores mapped, we're making
+              shopping experiences easier and more enjoyable for millions of
+              visitors worldwide.
+            </p>
+            <div class="grid grid-cols-2 gap-6">
+              <div>
+                <div class="text-3xl font-bold text-teal-600 mb-2">500+</div>
+                <div class="text-gray-600">Malls Worldwide</div>
+              </div>
+              <div>
+                <div class="text-3xl font-bold text-blue-600 mb-2">50K+</div>
+                <div class="text-gray-600">Stores Mapped</div>
+              </div>
+              <div>
+                <div class="text-3xl font-bold text-teal-600 mb-2">1M+</div>
+                <div class="text-gray-600">Monthly Users</div>
+              </div>
+              <div>
+                <div class="text-3xl font-bold text-blue-600 mb-2">4.9★</div>
+                <div class="text-gray-600">Average Rating</div>
+              </div>
+            </div>
+          </div>
+          <div class="relative">
+            <img
+              src="https://images.unsplash.com/photo-1752386452625-666d457f83d9"
+              alt="Modern Mall Architecture"
+              class="rounded-3xl shadow-2xl"
+            />
+            <div
+              class="absolute -bottom-6 -right-6 w-64 h-64 bg-gradient-to-br from-teal-500 to-blue-500 rounded-3xl blur-3xl opacity-30"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Demo Section -->
+    <section id="demo" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            See It In
+            <span
+              class="bg-gradient-to-r from-teal-500 to-blue-500 bg-clip-text text-transparent"
+              >Action</span
+            >
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Experience how easy it is to navigate any mall with our interactive
+            directory
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+          <!-- Mall Map Visualization -->
+          <div
+            class="bg-gradient-to-br from-gray-50 to-blue-50 rounded-3xl p-8 shadow-2xl"
+          >
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="text-2xl font-bold text-gray-900">Riverstone Mall</h3>
+              <span
+                class="px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-semibold"
+                >Live</span
+              >
             </div>
 
-            <h1 class="font-heading text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 animate-rise-in" style="animation-delay:.12s">
-              Organize Real Places for
-              <span class="text-transparent bg-clip-text bg-gradient-to-r from-mg-mint to-mg-sea">Real Visitors</span>
-            </h1>
+            <!-- Floor Selector -->
+            <div class="flex gap-2 mb-6 overflow-x-auto pb-2">
+              <button
+                class="floor-tab active px-6 py-3 rounded-lg font-semibold whitespace-nowrap"
+                onclick="selectFloor(1, this)"
+              >
+                Floor 1
+              </button>
+              <button
+                class="floor-tab px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold whitespace-nowrap"
+                onclick="selectFloor(2, this)"
+              >
+                Floor 2
+              </button>
+              <button
+                class="floor-tab px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold whitespace-nowrap"
+                onclick="selectFloor(3, this)"
+              >
+                Floor 3
+              </button>
+              <button
+                class="floor-tab px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold whitespace-nowrap"
+                onclick="selectFloor(4, this)"
+              >
+                Floor 4
+              </button>
+            </div>
 
-            <p class="text-xl text-slate-300 leading-relaxed max-w-2xl animate-rise-in" style="animation-delay:.22s">
-              MallGuide helps teams create searchable mall and street guides with floor-aware editors, smart categorization, and pages that work cleanly on mobile.
-            </p>
+            <!-- Map Visual -->
+            <div class="relative bg-white rounded-2xl p-6 shadow-lg">
+              <img
+                src="https://images.unsplash.com/photo-1658373533385-c23d8235cfb9"
+                alt="Mall Floor Map"
+                class="w-full h-64 object-cover rounded-lg mb-4"
+              />
 
-            <div class="mt-9 flex flex-col sm:flex-row gap-4 animate-rise-in" style="animation-delay:.32s">
-              <a href="https://app.mallguide.online" target="_blank" rel="noopener noreferrer" class="px-7 py-4 rounded-xl bg-mg-mint text-mg-ink font-bold hover:bg-teal-300 transition-colors text-center">
-                Open App
-              </a>
-              <a href="#features" class="px-7 py-4 rounded-xl border border-white/25 bg-white/10 backdrop-blur-sm text-white font-semibold hover:bg-white/20 transition-colors text-center">
-                Explore Features
-              </a>
+              <!-- Interactive Pins -->
+              <div class="absolute top-20 left-20 pin-bounce">
+                <div
+                  class="w-6 h-6 bg-teal-600 rounded-full border-4 border-white shadow-lg"
+                ></div>
+                <div
+                  class="absolute -top-8 left-8 bg-blue-600 text-white px-3 py-1 rounded text-xs font-semibold whitespace-nowrap"
+                >
+                  Nike Store
+                </div>
+              </div>
+
+              <div
+                class="absolute top-32 right-24 pin-bounce"
+                style="animation-delay: 0.5s"
+              >
+                <div
+                  class="w-6 h-6 bg-cyan-600 rounded-full border-4 border-white shadow-lg"
+                ></div>
+                <div
+                  class="absolute -top-8 left-8 bg-purple-600 text-white px-3 py-1 rounded text-xs font-semibold whitespace-nowrap"
+                >
+                  Starbucks
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4 mt-4">
+                <div class="flex items-center">
+                  <div class="w-3 h-3 bg-teal-600 rounded-full mr-2"></div>
+                  <span class="text-sm text-gray-600">Retail Stores</span>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-3 h-3 bg-cyan-600 rounded-full mr-2"></div>
+                  <span class="text-sm text-gray-600">Food & Dining</span>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-3 h-3 bg-green-600 rounded-full mr-2"></div>
+                  <span class="text-sm text-gray-600">Services</span>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-3 h-3 bg-red-600 rounded-full mr-2"></div>
+                  <span class="text-sm text-gray-600">Entertainment</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 text-center">
+              <p class="text-sm text-gray-500">
+                <span class="font-semibold text-gray-700">183 stores</span> •
+                <span class="font-semibold text-gray-700">4 floors</span> •
+                <span class="font-semibold text-gray-700"
+                  >Real-time updates</span
+                >
+              </p>
             </div>
           </div>
 
-          <div class="relative hidden lg:block">
-            <div class="mockup-shell rounded-3xl p-5 bg-white/10 border border-white/25 backdrop-blur-xl shadow-2xl">
-              <div class="rounded-2xl bg-slate-900/85 border border-white/10 p-4">
-                <div class="flex items-center justify-between pb-4 border-b border-white/10">
-                  <div>
-                    <p class="text-xs uppercase tracking-wide text-slate-400">Directory View</p>
-                    <h3 class="font-heading text-xl font-semibold text-white">Riverstone Mall</h3>
-                  </div>
-                  <span class="px-3 py-1 text-xs font-bold rounded-full bg-mg-mint/20 text-mg-mint">Live</span>
+          <!-- Store Directory -->
+          <div>
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
+              <!-- Search Bar -->
+              <div class="p-6 bg-gradient-to-r from-teal-500 to-blue-500">
+                <div class="relative">
+                  <input
+                    type="text"
+                    placeholder="Search stores, restaurants, services..."
+                    class="w-full px-5 py-4 pr-12 rounded-xl focus:outline-none search-bar text-gray-700"
+                    id="storeSearch"
+                    oninput="filterStores(this.value)"
+                  />
+                  <svg
+                    class="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    ></path>
+                  </svg>
                 </div>
-                <div class="mt-4 grid grid-cols-2 gap-3">
-                  <div class="mini-card">
-                    <p class="mini-kicker">Floors</p>
-                    <p class="mini-number">4</p>
+              </div>
+
+              <!-- Category Filters -->
+              <div
+                class="px-6 py-4 bg-gray-50 border-b flex gap-2 overflow-x-auto"
+              >
+                <button
+                  class="px-4 py-2 bg-teal-600 text-white rounded-full text-sm font-semibold whitespace-nowrap"
+                >
+                  All
+                </button>
+                <button
+                  class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm font-semibold whitespace-nowrap hover:bg-gray-300"
+                >
+                  Fashion
+                </button>
+                <button
+                  class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm font-semibold whitespace-nowrap hover:bg-gray-300"
+                >
+                  Food
+                </button>
+                <button
+                  class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm font-semibold whitespace-nowrap hover:bg-gray-300"
+                >
+                  Tech
+                </button>
+                <button
+                  class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm font-semibold whitespace-nowrap hover:bg-gray-300"
+                >
+                  Beauty
+                </button>
+              </div>
+
+              <!-- Store List -->
+              <div class="max-h-96 overflow-y-auto" id="storeList">
+                <div
+                  class="store-item p-4 border-b flex items-center justify-between"
+                >
+                  <div class="flex items-center">
+                    <div
+                      class="w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-lg flex items-center justify-center text-white font-bold text-lg mr-4"
+                    >
+                      N
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-gray-900">Nike Store</h4>
+                      <p class="text-sm text-gray-500">Floor 2, Section A</p>
+                    </div>
                   </div>
-                  <div class="mini-card">
-                    <p class="mini-kicker">Stores</p>
-                    <p class="mini-number">183</p>
-                  </div>
-                  <div class="mini-card col-span-2">
-                    <p class="mini-kicker">Search</p>
-                    <p class="text-sm text-slate-300">"coffee", "parking", "phone repair"</p>
-                  </div>
+                  <svg
+                    class="w-5 h-5 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    ></path>
+                  </svg>
                 </div>
-                <div class="mt-4 h-36 rounded-xl bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 bg-[length:200%_200%] animate-shimmer border border-white/10"></div>
+
+                <div
+                  class="store-item p-4 border-b flex items-center justify-between"
+                >
+                  <div class="flex items-center">
+                    <div
+                      class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center text-white font-bold text-lg mr-4"
+                    >
+                      S
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-gray-900">
+                        Starbucks Coffee
+                      </h4>
+                      <p class="text-sm text-gray-500">Floor 1, Food Court</p>
+                    </div>
+                  </div>
+                  <svg
+                    class="w-5 h-5 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    ></path>
+                  </svg>
+                </div>
+
+                <div
+                  class="store-item p-4 border-b flex items-center justify-between"
+                >
+                  <div class="flex items-center">
+                    <div
+                      class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-lg mr-4"
+                    >
+                      Z
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-gray-900">Zara</h4>
+                      <p class="text-sm text-gray-500">Floor 2, Section B</p>
+                    </div>
+                  </div>
+                  <svg
+                    class="w-5 h-5 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    ></path>
+                  </svg>
+                </div>
+
+                <div
+                  class="store-item p-4 border-b flex items-center justify-between"
+                >
+                  <div class="flex items-center">
+                    <div
+                      class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center text-white font-bold text-lg mr-4"
+                    >
+                      A
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-gray-900">Apple Store</h4>
+                      <p class="text-sm text-gray-500">
+                        Floor 1, Main Entrance
+                      </p>
+                    </div>
+                  </div>
+                  <svg
+                    class="w-5 h-5 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    ></path>
+                  </svg>
+                </div>
+
+                <div
+                  class="store-item p-4 border-b flex items-center justify-between"
+                >
+                  <div class="flex items-center">
+                    <div
+                      class="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center text-white font-bold text-lg mr-4"
+                    >
+                      H
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-gray-900">H&M</h4>
+                      <p class="text-sm text-gray-500">
+                        Floor 3, Fashion District
+                      </p>
+                    </div>
+                  </div>
+                  <svg
+                    class="w-5 h-5 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    ></path>
+                  </svg>
+                </div>
+
+                <div class="store-item p-4 flex items-center justify-between">
+                  <div class="flex items-center">
+                    <div
+                      class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-lg mr-4"
+                    >
+                      M
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-gray-900">McDonald's</h4>
+                      <p class="text-sm text-gray-500">
+                        Floor 4, Rooftop Food Court
+                      </p>
+                    </div>
+                  </div>
+                  <svg
+                    class="w-5 h-5 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="p-4 bg-gray-50 text-center">
+                <p class="text-sm text-gray-600">
+                  Showing
+                  <span class="font-semibold" id="storeCount">6</span> of 183
+                  stores
+                </p>
               </div>
             </div>
           </div>
@@ -187,247 +688,1402 @@
       </div>
     </section>
 
-    <section id="about" class="py-24 bg-white">
+    <!-- Features with Visuals -->
+    <section
+      id="features"
+      class="py-20 bg-gradient-to-br from-gray-50 to-blue-50"
+    >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-14">
-          <p class="section-kicker text-mg-coral">Why MallGuide</p>
-          <h2 class="section-title text-mg-ink">From Floor Plans to Findable Information</h2>
-          <p class="section-copy">
-            MallGuide combines content, structure, and navigation so visitors can quickly locate stores and services, while teams keep data current across malls and street zones.
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Everything You Need to
+            <span
+              class="bg-gradient-to-r from-teal-500 to-blue-500 bg-clip-text text-transparent"
+              >Navigate Malls</span
+            >
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Powerful features designed for modern shopping experiences
           </p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-6">
-          <article class="stat-card reveal">
-            <p class="stat-value">3 Views</p>
-            <p class="stat-label">List, grid, and image floor editors for different mapping needs.</p>
-          </article>
-          <article class="stat-card reveal">
-            <p class="stat-value">15-25</p>
-            <p class="stat-label">AI-suggested store records generated per floor seed request.</p>
-          </article>
-          <article class="stat-card reveal">
-            <p class="stat-value">1 Stack</p>
-            <p class="stat-label">Firebase-first architecture for web app, API, and admin tools.</p>
-          </article>
+        <!-- Feature 1: Interactive Maps -->
+        <div class="mb-20">
+          <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div
+                class="inline-block px-4 py-2 bg-teal-100 text-teal-700 rounded-full text-sm font-semibold mb-4"
+              >
+                Visual Navigation
+              </div>
+              <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                Interactive Floor Maps
+              </h3>
+              <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                Navigate malls with stunning visual floor plans. See exactly
+                where each store is located with pinpoint accuracy. Zoom in,
+                zoom out, and explore every corner of the mall.
+              </p>
+              <ul class="space-y-4">
+                <li class="flex items-start">
+                  <svg
+                    class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-1"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  <div>
+                    <span class="font-semibold text-gray-900"
+                      >Multi-floor visualization</span
+                    >
+                    <p class="text-gray-600">
+                      Switch between floors seamlessly
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <svg
+                    class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-1"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  <div>
+                    <span class="font-semibold text-gray-900"
+                      >Color-coded categories</span
+                    >
+                    <p class="text-gray-600">
+                      Quickly identify store types at a glance
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <svg
+                    class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-1"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  <div>
+                    <span class="font-semibold text-gray-900"
+                      >Real-time updates</span
+                    >
+                    <p class="text-gray-600">
+                      Always current store locations and info
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="relative">
+              <img
+                src="https://images.unsplash.com/photo-1693040636921-5b88b9f20f2d"
+                alt="Mall Navigation"
+                class="rounded-3xl shadow-2xl"
+              />
+              <div
+                class="absolute -bottom-6 -right-6 w-64 h-64 bg-gradient-to-br from-teal-500 to-blue-500 rounded-3xl blur-3xl opacity-30"
+              ></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature 2: Smart Search -->
+        <div class="mb-20">
+          <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="order-2 lg:order-1 relative">
+              <img
+                src="https://images.unsplash.com/photo-1752386452625-666d457f83d9"
+                alt="Multi-Level Mall"
+                class="rounded-3xl shadow-2xl"
+              />
+              <div
+                class="absolute -top-6 -left-6 w-64 h-64 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-3xl blur-3xl opacity-30"
+              ></div>
+            </div>
+            <div class="order-1 lg:order-2">
+              <div
+                class="inline-block px-4 py-2 bg-cyan-100 text-cyan-700 rounded-full text-sm font-semibold mb-4"
+              >
+                Instant Results
+              </div>
+              <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                Powerful Search & Filters
+              </h3>
+              <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                Find exactly what you're looking for in milliseconds. Search by
+                store name, category, brand, or even what you want to buy. Our
+                smart algorithms understand your needs.
+              </p>
+              <ul class="space-y-4">
+                <li class="flex items-start">
+                  <svg
+                    class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-1"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  <div>
+                    <span class="font-semibold text-gray-900"
+                      >Natural language search</span
+                    >
+                    <p class="text-gray-600">
+                      Type naturally - "coffee near parking" works!
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <svg
+                    class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-1"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  <div>
+                    <span class="font-semibold text-gray-900"
+                      >Category filters</span
+                    >
+                    <p class="text-gray-600">
+                      Browse by Fashion, Food, Tech, Beauty & more
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <svg
+                    class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-1"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  <div>
+                    <span class="font-semibold text-gray-900"
+                      >Floor-specific search</span
+                    >
+                    <p class="text-gray-600">
+                      Narrow down by specific floors or areas
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature 3: AI-Powered -->
+        <div>
+          <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div
+                class="inline-block px-4 py-2 bg-pink-100 text-pink-700 rounded-full text-sm font-semibold mb-4"
+              >
+                AI Technology
+              </div>
+              <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                Smart Recommendations
+              </h3>
+              <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                Our AI learns your preferences and suggests stores you might
+                like. Get personalized recommendations based on your shopping
+                history and popular trends.
+              </p>
+              <ul class="space-y-4">
+                <li class="flex items-start">
+                  <svg
+                    class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-1"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  <div>
+                    <span class="font-semibold text-gray-900"
+                      >Personalized suggestions</span
+                    >
+                    <p class="text-gray-600">
+                      Discover stores based on your interests
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <svg
+                    class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-1"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  <div>
+                    <span class="font-semibold text-gray-900"
+                      >Trending stores</span
+                    >
+                    <p class="text-gray-600">See what's popular in real-time</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <svg
+                    class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-1"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  <div>
+                    <span class="font-semibold text-gray-900"
+                      >Save favorites</span
+                    >
+                    <p class="text-gray-600">
+                      Bookmark stores for quick access later
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="relative">
+              <img
+                src="https://images.pexels.com/photos/33259869/pexels-photo-33259869.jpeg"
+                alt="Modern Mall Interior"
+                class="rounded-3xl shadow-2xl"
+              />
+              <div
+                class="absolute -bottom-6 -right-6 w-64 h-64 bg-gradient-to-br from-pink-500 to-red-600 rounded-3xl blur-3xl opacity-30"
+              ></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="features" class="py-24 bg-mg-cream relative overflow-hidden">
-      <div class="absolute top-0 right-0 h-[420px] w-[420px] rounded-full bg-mg-sea/10 blur-3xl translate-x-1/3 -translate-y-1/3"></div>
-      <div class="absolute bottom-0 left-0 h-[420px] w-[420px] rounded-full bg-mg-coral/10 blur-3xl -translate-x-1/3 translate-y-1/3"></div>
-
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-          <p class="section-kicker text-mg-sea">Platform Features</p>
-          <h2 class="section-title text-mg-ink">Everything Needed to Run a Modern Directory</h2>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <article class="feature-card reveal">
-            <h3 class="feature-title">Floor Editors That Fit the Space</h3>
-            <p class="feature-text">Switch between list, grid, and image editors based on how each level is documented.</p>
-          </article>
-          <article class="feature-card reveal">
-            <h3 class="feature-title">Street Guide Mode</h3>
-            <p class="feature-text">Model storefronts and businesses for open-air districts and mixed-use corridors.</p>
-          </article>
-          <article class="feature-card reveal">
-            <h3 class="feature-title">AI Tenant Generation</h3>
-            <p class="feature-text">Generate realistic first-pass tenant lists to accelerate onboarding of new properties.</p>
-          </article>
-          <article class="feature-card reveal">
-            <h3 class="feature-title">Search + Category Filters</h3>
-            <p class="feature-text">Visitors can quickly find stores by name, description, floor, and category.</p>
-          </article>
-          <article class="feature-card reveal">
-            <h3 class="feature-title">Favourites and Engagement</h3>
-            <p class="feature-text">Users can save malls and guides they revisit often, improving repeat discovery.</p>
-          </article>
-          <article class="feature-card reveal">
-            <h3 class="feature-title">API and Admin Ready</h3>
-            <p class="feature-text">Backed by authenticated REST endpoints for managing malls, floors, stores, and businesses.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="how-it-works" class="py-24 bg-mg-deep text-white relative overflow-hidden">
-      <div class="absolute top-10 left-12 h-44 w-44 rounded-full bg-mg-mint/20 blur-3xl"></div>
-      <div class="absolute bottom-10 right-12 h-52 w-52 rounded-full bg-mg-sea/20 blur-3xl"></div>
-
-      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-14">
-          <p class="section-kicker text-mg-mint">How It Works</p>
-          <h2 class="section-title text-white">Launch and Maintain Guides in Three Steps</h2>
-        </div>
-        <div class="grid lg:grid-cols-3 gap-6">
-          <article class="step-card reveal">
-            <p class="step-number">01</p>
-            <h3 class="step-title">Create the Place</h3>
-            <p class="step-text">Add a mall or street, define location details, and structure floors or blocks.</p>
-          </article>
-          <article class="step-card reveal">
-            <p class="step-number">02</p>
-            <h3 class="step-title">Populate Stores</h3>
-            <p class="step-text">Enter tenants manually, import candidates, or seed records with AI assistance.</p>
-          </article>
-          <article class="step-card reveal">
-            <p class="step-number">03</p>
-            <h3 class="step-title">Publish + Iterate</h3>
-            <p class="step-text">Deliver searchable pages for visitors, then refine details as occupancy changes.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="use-cases" class="py-24 bg-white">
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-20 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-14">
-          <p class="section-kicker text-mg-coral">Who Uses MallGuide</p>
-          <h2 class="section-title text-mg-ink">Built for Operators, Teams, and Communities</h2>
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            How It
+            <span
+              class="bg-gradient-to-r from-teal-500 to-blue-500 bg-clip-text text-transparent"
+              >Works</span
+            >
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Start navigating malls in three simple steps
+          </p>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <article class="audience-card reveal">
-            <h3 class="audience-title">Mall Operators</h3>
-            <p class="audience-copy">Keep tenant listings current and reduce visitor friction.</p>
-          </article>
-          <article class="audience-card reveal">
-            <h3 class="audience-title">Leasing Teams</h3>
-            <p class="audience-copy">Surface availability context and category balance by floor.</p>
-          </article>
-          <article class="audience-card reveal">
-            <h3 class="audience-title">City Programs</h3>
-            <p class="audience-copy">Publish high-quality street guides for local business districts.</p>
-          </article>
-          <article class="audience-card reveal">
-            <h3 class="audience-title">Shoppers</h3>
-            <p class="audience-copy">Find what they need quickly across complex physical environments.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="py-24 bg-gradient-to-r from-teal-600 to-sky-600 text-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-12">
-          <p class="section-kicker text-white/80">What Teams Say</p>
-          <h2 class="section-title text-white">Faster Directory Workflows, Better Visitor Discovery</h2>
-        </div>
-        <div class="grid md:grid-cols-3 gap-6">
-          <article class="quote-card reveal">
-            <p class="quote-text">"We replaced stale PDF maps with a live guide our visitors actually use."</p>
-            <p class="quote-author">Operations Lead, Regional Mall Group</p>
-          </article>
-          <article class="quote-card reveal">
-            <p class="quote-text">"The image editor made it easy to align stores to our floor plan with almost no training."</p>
-            <p class="quote-author">Directory Manager, City Centre</p>
-          </article>
-          <article class="quote-card reveal">
-            <p class="quote-text">"AI seeding gave our team a solid first draft for new properties in minutes."</p>
-            <p class="quote-author">Product Owner, Multi-site Retail Network</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="faq" class="py-20 bg-mg-cream">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl sm:text-4xl font-heading font-bold text-center text-mg-ink mb-10">Frequently Asked Questions</h2>
-        <div class="space-y-4">
-          <article class="faq-item">
-            <button class="faq-question" type="button">
-              <span>Is MallGuide only for malls?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>MallGuide supports both mall directories and street-based guides, so teams can model enclosed and open-air spaces.</p>
-            </div>
-          </article>
-          <article class="faq-item">
-            <button class="faq-question" type="button">
-              <span>Can we map store positions visually?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>Yes. You can manage positions with list ordering, grid areas, or image-based pin placement depending on your floor data quality.</p>
-            </div>
-          </article>
-          <article class="faq-item">
-            <button class="faq-question" type="button">
-              <span>Do you provide API access?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>The platform includes authenticated REST endpoints for malls, floors, stores, street guides, and businesses.</p>
-            </div>
-          </article>
-          <article class="faq-item">
-            <button class="faq-question" type="button">
-              <span>Can teams collaborate on updates?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>Yes. Role-based access lets admins and editors collaborate while keeping sensitive operations protected.</p>
-            </div>
-          </article>
-          <article class="faq-item">
-            <button class="faq-question" type="button">
-              <span>How do we get started?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>Reach out via email and we can set up a walkthrough based on your current directory workflow.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="py-24 bg-mg-ink text-white relative overflow-hidden">
-      <div class="absolute top-0 left-0 h-full w-full bg-grid-pattern opacity-20"></div>
-      <div class="relative max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-        <h2 class="text-4xl sm:text-5xl font-heading font-extrabold mb-5">Ready to Build Better Place Discovery?</h2>
-        <p class="text-xl text-slate-300 mb-9">See how MallGuide fits malls, mixed-use spaces, and city street programs.</p>
-        <a href="https://linkedin.com/company/mallguide/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl bg-mg-mint text-mg-ink font-bold hover:bg-teal-300 transition-colors text-lg">
-          linkedin.com/company/mallguide/
-        </a>
-      </div>
-    </section>
-
-    <footer class="bg-slate-950 text-slate-300 py-12">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid md:grid-cols-3 gap-8">
-          <div>
-            <div class="flex items-center gap-3 mb-3">
-              <img src="assets/logo.svg" alt="MallGuide" class="h-10 w-10" />
-              <span class="font-heading font-bold text-xl text-white">MallGuide</span>
+          <div class="text-center">
+            <div class="relative mb-6">
+              <div
+                class="w-20 h-20 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl mx-auto flex items-center justify-center shadow-xl transform hover:scale-110 transition-transform"
+              >
+                <svg
+                  class="w-10 h-10 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  ></path>
+                </svg>
+              </div>
+              <span
+                class="absolute -top-2 -right-2 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold"
+                >1</span
+              >
             </div>
-            <p class="text-slate-400">Interactive directories for malls and streets.</p>
-            <p class="text-slate-500 mt-3">&copy; 2026 MallGuide. All rights reserved.</p>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">
+              Search or Browse
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+              Type what you're looking for or browse by category to discover
+              stores
+            </p>
           </div>
-          <div>
-            <h3 class="font-heading text-white font-semibold mb-3">Product</h3>
-            <ul class="space-y-2">
-              <li><a href="#features" class="footer-link">Features</a></li>
-              <li><a href="#how-it-works" class="footer-link">How It Works</a></li>
-              <li><a href="#use-cases" class="footer-link">Use Cases</a></li>
-              <li><a href="#faq" class="footer-link">FAQ</a></li>
+
+          <div class="text-center">
+            <div class="relative mb-6">
+              <div
+                class="w-20 h-20 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-2xl mx-auto flex items-center justify-center shadow-xl transform hover:scale-110 transition-transform"
+              >
+                <svg
+                  class="w-10 h-10 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
+                  ></path>
+                </svg>
+              </div>
+              <span
+                class="absolute -top-2 -right-2 w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold"
+                >2</span
+              >
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">View on Map</h3>
+            <p class="text-gray-600 leading-relaxed">
+              See exact location on interactive floor plan with pinpoint
+              accuracy
+            </p>
+          </div>
+
+          <div class="text-center">
+            <div class="relative mb-6">
+              <div
+                class="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl mx-auto flex items-center justify-center shadow-xl transform hover:scale-110 transition-transform"
+              >
+                <svg
+                  class="w-10 h-10 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"
+                  ></path>
+                </svg>
+              </div>
+              <span
+                class="absolute -top-2 -right-2 w-8 h-8 bg-pink-600 text-white rounded-full flex items-center justify-center font-bold"
+                >3</span
+              >
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">
+              Navigate & Shop
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+              Follow the path and enjoy stress-free shopping experience
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <!-- <section
+      class="py-20 bg-gradient-to-br from-teal-500 via-cyan-500 to-blue-500 text-white"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">
+            Trusted by Shoppers Worldwide
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div class="glass rounded-2xl p-6">
+            <div class="text-4xl md:text-5xl font-bold mb-2">500+</div>
+            <div class="text-blue-100">Malls Listed</div>
+          </div>
+          <div class="glass rounded-2xl p-6">
+            <div class="text-4xl md:text-5xl font-bold mb-2">50K+</div>
+            <div class="text-blue-100">Stores Mapped</div>
+          </div>
+          <div class="glass rounded-2xl p-6">
+            <div class="text-4xl md:text-5xl font-bold mb-2">1M+</div>
+            <div class="text-blue-100">Monthly Users</div>
+          </div>
+          <div class="glass rounded-2xl p-6">
+            <div class="text-4xl md:text-5xl font-bold mb-2">4.9★</div>
+            <div class="text-blue-100">User Rating</div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- Use Cases Section -->
+    <section id="use-cases" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Perfect For
+            <span
+              class="bg-gradient-to-r from-teal-500 to-blue-500 bg-clip-text text-transparent"
+              >Every Need</span
+            >
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            From shoppers to mall operators, MallGuide serves everyone
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Use Case 1 -->
+          <div
+            class="bg-gradient-to-br from-teal-50 to-cyan-50 rounded-2xl p-8 hover-scale"
+          >
+            <div
+              class="w-16 h-16 bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl flex items-center justify-center mb-6"
+            >
+              <svg
+                class="w-8 h-8 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-3">Shoppers</h3>
+            <p class="text-gray-600 leading-relaxed mb-4">
+              Find stores, restaurants, and services instantly. Save time and
+              shop smarter with interactive maps.
+            </p>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li class="flex items-center">
+                <svg
+                  class="w-4 h-4 text-teal-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Quick store lookup
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-4 h-4 text-teal-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Save favorites
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-4 h-4 text-teal-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Mobile access
+              </li>
             </ul>
           </div>
-          <div>
-            <h3 class="font-heading text-white font-semibold mb-3">Legal</h3>
-            <ul class="space-y-2">
-              <li><a href="terms.html" class="footer-link">Terms of Use</a></li>
-              <li><a href="privacy.html" class="footer-link">Privacy Policy</a></li>
+
+          <!-- Use Case 2 -->
+          <div
+            class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 hover-scale"
+          >
+            <div
+              class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-6"
+            >
+              <svg
+                class="w-8 h-8 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-3">
+              Mall Operators
+            </h3>
+            <p class="text-gray-600 leading-relaxed mb-4">
+              Manage directories efficiently. Update store information in
+              real-time and improve visitor experience.
+            </p>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li class="flex items-center">
+                <svg
+                  class="w-4 h-4 text-blue-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Real-time updates
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-4 h-4 text-blue-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Analytics dashboard
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-4 h-4 text-blue-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Easy management
+              </li>
             </ul>
           </div>
+
+          <!-- Use Case 3 -->
+          <div
+            class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl p-8 hover-scale"
+          >
+            <div
+              class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-xl flex items-center justify-center mb-6"
+            >
+              <svg
+                class="w-8 h-8 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-3">Leasing Teams</h3>
+            <p class="text-gray-600 leading-relaxed mb-4">
+              Showcase available spaces. Track tenant mix and optimize floor
+              layouts for better performance.
+            </p>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li class="flex items-center">
+                <svg
+                  class="w-4 h-4 text-cyan-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Space availability
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-4 h-4 text-cyan-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Tenant insights
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-4 h-4 text-cyan-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Category balance
+              </li>
+            </ul>
+          </div>
+
+          <!-- Use Case 4 -->
+          <div
+            class="bg-gradient-to-br from-teal-50 to-blue-50 rounded-2xl p-8 hover-scale"
+          >
+            <div
+              class="w-16 h-16 bg-gradient-to-br from-teal-500 to-blue-500 rounded-xl flex items-center justify-center mb-6"
+            >
+              <svg
+                class="w-8 h-8 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-3">City Programs</h3>
+            <p class="text-gray-600 leading-relaxed mb-4">
+              Support local businesses. Create street directories for downtown
+              districts and commercial areas.
+            </p>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li class="flex items-center">
+                <svg
+                  class="w-4 h-4 text-teal-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Street guides
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-4 h-4 text-teal-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Business support
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-4 h-4 text-teal-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Community growth
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-gray-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Frequently Asked
+            <span
+              class="bg-gradient-to-r from-teal-500 to-blue-500 bg-clip-text text-transparent"
+              >Questions</span
+            >
+          </h2>
+          <p class="text-xl text-gray-600">
+            Everything you need to know about MallGuide
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-white rounded-xl shadow-md overflow-hidden">
+            <button
+              class="faq-button w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+              data-faq="1"
+            >
+              <span class="text-lg font-semibold text-gray-900"
+                >Is MallGuide only for malls?</span
+              >
+              <svg
+                class="faq-icon w-6 h-6 text-teal-600 transform transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </button>
+            <div class="faq-content px-8">
+              <p class="text-gray-600 leading-relaxed">
+                MallGuide supports both mall directories and street-based
+                guides, so teams can model enclosed and open-air spaces.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden">
+            <button
+              class="faq-button w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+              data-faq="2"
+            >
+              <span class="text-lg font-semibold text-gray-900"
+                >Does it work on mobile phones?</span
+              >
+              <svg
+                class="faq-icon w-6 h-6 text-teal-600 transform transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </button>
+            <div class="faq-content px-8">
+              <p class="text-gray-600 leading-relaxed">
+                Yes! MallGuide is mobile-first and works perfectly on all
+                smartphones and tablets. Just open it in your browser - no app
+                download needed.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden">
+            <button
+              class="faq-button w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+              data-faq="2"
+            >
+              <span class="text-lg font-semibold text-gray-900"
+                >Can we map store positions visually?</span
+              >
+              <svg
+                class="faq-icon w-6 h-6 text-teal-600 transform transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </button>
+            <div class="faq-content px-8">
+              <p class="text-gray-600 leading-relaxed">
+                Yes. You can manage positions with list ordering, grid areas, or
+                image-based pin placement depending on your floor data quality.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden">
+            <button
+              class="faq-button w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+              data-faq="3"
+            >
+              <span class="text-lg font-semibold text-gray-900"
+                >Do you provide API access?</span
+              >
+              <svg
+                class="faq-icon w-6 h-6 text-teal-600 transform transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </button>
+            <div class="faq-content px-8">
+              <p class="text-gray-600 leading-relaxed">
+                The platform includes authenticated REST endpoints for malls,
+                floors, stores, street guides, and businesses.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden">
+            <button
+              class="faq-button w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+              data-faq="4"
+            >
+              <span class="text-lg font-semibold text-gray-900"
+                >Can teams collaborate on updates?</span
+              >
+              <svg
+                class="faq-icon w-6 h-6 text-teal-600 transform transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </button>
+            <div class="faq-content px-8">
+              <p class="text-gray-600 leading-relaxed">
+                Yes. Role-based access lets admins and editors collaborate while
+                keeping sensitive operations protected.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden">
+            <button
+              class="faq-button w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+              data-faq="5"
+            >
+              <span class="text-lg font-semibold text-gray-900"
+                >How do we get started?</span
+              >
+              <svg
+                class="faq-icon w-6 h-6 text-teal-600 transform transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </button>
+            <div class="faq-content px-8">
+              <p class="text-gray-600 leading-relaxed">
+                Reach out via email and we can set up a walkthrough based on
+                your current directory workflow.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <!-- <section id="contact" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Get In
+              <span
+                class="bg-gradient-to-r from-teal-500 to-blue-500 bg-clip-text text-transparent"
+                >Touch</span
+              >
+            </h2>
+            <p class="text-xl text-gray-600">
+              Have questions? We'd love to hear from you.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-12">
+            <div class="space-y-8">
+              <div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">
+                  Contact Information
+                </h3>
+                <div class="space-y-4">
+                  <div class="flex items-start">
+                    <div
+                      class="w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-lg flex items-center justify-center flex-shrink-0"
+                    >
+                      <svg
+                        class="w-6 h-6 text-white"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="ml-4">
+                      <div class="text-sm font-semibold text-gray-900 mb-1">
+                        Email
+                      </div>
+                      <a
+                        href="mailto:hello@mallguide.online"
+                        class="text-teal-600 hover:text-teal-700"
+                        >hello@mallguide.online</a
+                      >
+                    </div>
+                  </div>
+
+                  <div class="flex items-start">
+                    <div
+                      class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center flex-shrink-0"
+                    >
+                      <svg
+                        class="w-6 h-6 text-white"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                        ></path>
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="ml-4">
+                      <div class="text-sm font-semibold text-gray-900 mb-1">
+                        Address
+                      </div>
+                      <p class="text-gray-600">
+                        123 Tech Street<br />San Francisco, CA 94105
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start">
+                    <div
+                      class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center flex-shrink-0"
+                    >
+                      <svg
+                        class="w-6 h-6 text-white"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                        />
+                      </svg>
+                    </div>
+                    <div class="ml-4">
+                      <div class="text-sm font-semibold text-gray-900 mb-1">
+                        Social
+                      </div>
+                      <a
+                        href="https://linkedin.com/company/mallguide/"
+                        target="_blank"
+                        class="text-teal-600 hover:text-teal-700"
+                        >LinkedIn</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="bg-gradient-to-br from-teal-50 to-blue-50 rounded-2xl p-6"
+              >
+                <h4 class="font-bold text-gray-900 mb-2">For Mall Operators</h4>
+                <p class="text-gray-600 text-sm mb-4">
+                  Interested in adding your mall to MallGuide? Let's discuss how
+                  we can help improve your visitor experience.
+                </p>
+                <a
+                  href="mailto:partnerships@mallguide.online"
+                  class="text-teal-600 font-semibold hover:text-teal-700"
+                  >partnerships@mallguide.online</a
+                >
+              </div>
+            </div>
+            <div>
+              <form class="space-y-6">
+                <div>
+                  <label
+                    for="name"
+                    class="block text-sm font-semibold text-gray-900 mb-2"
+                    >Name</label
+                  >
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    placeholder="Your name"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    for="email"
+                    class="block text-sm font-semibold text-gray-900 mb-2"
+                    >Email</label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    placeholder="your@email.com"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    for="subject"
+                    class="block text-sm font-semibold text-gray-900 mb-2"
+                    >Subject</label
+                  >
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    placeholder="How can we help?"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    for="message"
+                    class="block text-sm font-semibold text-gray-900 mb-2"
+                    >Message</label
+                  >
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-none"
+                    placeholder="Tell us more..."
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  class="w-full px-8 py-4 bg-gradient-to-r from-teal-500 to-blue-500 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- CTA Section -->
+    <section
+      class="py-24 bg-gradient-to-br from-teal-500 via-cyan-500 to-blue-500 relative overflow-hidden"
+    >
+      <div class="absolute inset-0 opacity-10">
+        <div
+          class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full filter blur-3xl"
+        ></div>
+        <div
+          class="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full filter blur-3xl"
+        ></div>
+      </div>
+
+      <div
+        class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10"
+      >
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+          Ready to Never Get Lost in a Mall Again?
+        </h2>
+        <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
+          Join millions of shoppers who navigate malls effortlessly with
+          MallGuide
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="https://app.mallguide.online/"
+            target="_blank"
+            class="px-10 py-5 bg-white text-blue-600 rounded-full font-semibold text-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 inline-block"
+          >
+            Start Exploring Now
+          </a>
+          <a
+            href="#demo"
+            class="px-10 py-5 bg-transparent border-2 border-white text-white rounded-full font-semibold text-lg hover:bg-white hover:text-blue-600 transition-all duration-300 transform hover:scale-105 inline-block"
+          >
+            Try Live Demo
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <img
+              src="assets/logo.svg"
+              alt="MallGuide Logo"
+              class="h-12 w-auto mb-4"
+            />
+            <p class="text-gray-400">
+              Navigate shopping malls with ease using interactive maps and smart
+              search.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="font-semibold mb-4">Product</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="#features" class="hover:text-white transition-colors"
+                  >Features</a
+                >
+              </li>
+              <li>
+                <a href="#demo" class="hover:text-white transition-colors"
+                  >Live Demo</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://app.mallguide.online/"
+                  target="_blank"
+                  class="hover:text-white transition-colors"
+                  >Open App</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-semibold mb-4">Resources</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a
+                  href="#how-it-works"
+                  class="hover:text-white transition-colors"
+                  >How It Works</a
+                >
+              </li>
+              <li>
+                <a href="#faq" class="hover:text-white transition-colors"
+                  >FAQ</a
+                >
+              </li>
+              <li></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-semibold mb-4">Legal</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="terms.html" class="footer-link">Terms of Use</a>
+              </li>
+              <li>
+                <a href="privacy.html" class="footer-link">Privacy Policy</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+          <p>
+            &copy; 2026 MallGuide. All rights reserved. Making shopping easier.
+          </p>
         </div>
       </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <!-- JavaScript -->
+    <script>
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+
+      // FAQ Accordion
+      document.querySelectorAll(".faq-button").forEach((button) => {
+        button.addEventListener("click", function () {
+          const content = this.nextElementSibling;
+          const icon = this.querySelector(".faq-icon");
+
+          content.classList.toggle("active");
+          icon.classList.toggle("active");
+
+          document.querySelectorAll(".faq-content").forEach((otherContent) => {
+            if (otherContent !== content) {
+              otherContent.classList.remove("active");
+              otherContent.previousElementSibling
+                .querySelector(".faq-icon")
+                .classList.remove("active");
+            }
+          });
+        });
+      });
+
+      // Floor selector
+      function selectFloor(floor, button) {
+        document.querySelectorAll(".floor-tab").forEach((tab) => {
+          tab.classList.remove("active");
+          tab.classList.add("bg-gray-200", "text-gray-700");
+        });
+        button.classList.add("active");
+        button.classList.remove("bg-gray-200", "text-gray-700");
+        console.log("Selected floor:", floor);
+      }
+
+      // Store search filter
+      function filterStores(query) {
+        const storeItems = document.querySelectorAll(".store-item");
+        let visibleCount = 0;
+
+        storeItems.forEach((item) => {
+          const storeName = item.querySelector("h4").textContent.toLowerCase();
+          const storeLocation = item
+            .querySelector("p")
+            .textContent.toLowerCase();
+
+          if (
+            storeName.includes(query.toLowerCase()) ||
+            storeLocation.includes(query.toLowerCase())
+          ) {
+            item.style.display = "flex";
+            visibleCount++;
+          } else {
+            item.style.display = "none";
+          }
+        });
+
+        document.getElementById("storeCount").textContent = visibleCount;
+      }
+
+      // Navbar scroll effect
+      const navbar = document.querySelector("nav");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          navbar.style.background = "rgba(255, 255, 255, 0.98)";
+          navbar.style.boxShadow = "0 4px 6px -1px rgba(0, 0, 0, 0.1)";
+        } else {
+          navbar.style.background = "rgba(255, 255, 255, 0.95)";
+          navbar.style.boxShadow = "0 1px 3px 0 rgba(0, 0, 0, 0.1)";
+        }
+      });
+
+      // Intersection Observer for animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll("section").forEach((section) => {
+        section.style.opacity = "0";
+        section.style.transform = "translateY(20px)";
+        section.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+        observer.observe(section);
+      });
+    </script>
   </body>
 </html>
