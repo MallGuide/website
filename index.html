@@ -63,7 +63,7 @@
               >FAQ</a
             >
           </div>
-          <div class="flex items-center space-x-4">
+          <div class="hidden md:flex items-center space-x-4">
             <a
               href="https://linkedin.com/company/mallguide/"
               class="text-gray-700 hover:text-teal-600 transition-colors font-medium"
@@ -74,6 +74,89 @@
               href="https://app.mallguide.online/"
               target="_blank"
               class="hidden sm:inline-block px-6 py-2 bg-gradient-to-r from-teal-500 to-blue-500 text-white rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105 font-semibold"
+            >
+              Open App
+            </a>
+          </div>
+
+          <button
+            id="mobileMenuButton"
+            type="button"
+            class="md:hidden inline-flex items-center justify-center rounded-lg p-2 text-gray-700 hover:text-teal-600 hover:bg-gray-100 transition-colors"
+            aria-label="Open mobile navigation menu"
+            aria-controls="mobileMenu"
+            aria-expanded="false"
+          >
+            <svg
+              id="menuIconOpen"
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+            <svg
+              id="menuIconClose"
+              class="w-6 h-6 hidden"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </button>
+        </div>
+
+        <div
+          id="mobileMenu"
+          class="md:hidden hidden border-t border-gray-100 py-4"
+        >
+          <div class="flex flex-col space-y-4">
+            <a
+              href="#about"
+              class="mobile-nav-link text-gray-700 hover:text-teal-600 transition-colors font-medium"
+              >About</a
+            >
+            <a
+              href="#how-it-works"
+              class="mobile-nav-link text-gray-700 hover:text-teal-600 transition-colors font-medium"
+              >How It Works</a
+            >
+            <a
+              href="#features"
+              class="mobile-nav-link text-gray-700 hover:text-teal-600 transition-colors font-medium"
+              >Features</a
+            >
+            <a
+              href="#use-cases"
+              class="mobile-nav-link text-gray-700 hover:text-teal-600 transition-colors font-medium"
+              >Use Cases</a
+            >
+            <a
+              href="#faq"
+              class="mobile-nav-link text-gray-700 hover:text-teal-600 transition-colors font-medium"
+              >FAQ</a
+            >
+            <a
+              href="https://linkedin.com/company/mallguide/"
+              class="text-gray-700 hover:text-teal-600 transition-colors font-medium"
+              >Contact</a
+            >
+            <a
+              href="https://app.mallguide.online/"
+              target="_blank"
+              class="inline-flex items-center justify-center px-5 py-3 bg-gradient-to-r from-teal-500 to-blue-500 text-white rounded-full hover:shadow-lg transition-all duration-300 font-semibold"
             >
               Open App
             </a>
@@ -2060,6 +2143,49 @@
         } else {
           navbar.style.background = "rgba(255, 255, 255, 0.95)";
           navbar.style.boxShadow = "0 1px 3px 0 rgba(0, 0, 0, 0.1)";
+        }
+      });
+
+      // Mobile menu toggle
+      const mobileMenuButton = document.getElementById("mobileMenuButton");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const menuIconOpen = document.getElementById("menuIconOpen");
+      const menuIconClose = document.getElementById("menuIconClose");
+
+      function closeMobileMenu() {
+        if (!mobileMenu || !mobileMenuButton) return;
+        mobileMenu.classList.add("hidden");
+        mobileMenuButton.setAttribute("aria-expanded", "false");
+        menuIconOpen?.classList.remove("hidden");
+        menuIconClose?.classList.add("hidden");
+      }
+
+      function openMobileMenu() {
+        if (!mobileMenu || !mobileMenuButton) return;
+        mobileMenu.classList.remove("hidden");
+        mobileMenuButton.setAttribute("aria-expanded", "true");
+        menuIconOpen?.classList.add("hidden");
+        menuIconClose?.classList.remove("hidden");
+      }
+
+      mobileMenuButton?.addEventListener("click", () => {
+        const isOpen = !mobileMenu.classList.contains("hidden");
+        if (isOpen) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+      });
+
+      document.querySelectorAll(".mobile-nav-link").forEach((link) => {
+        link.addEventListener("click", () => {
+          closeMobileMenu();
+        });
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 768) {
+          closeMobileMenu();
         }
       });
 

@@ -11,6 +11,28 @@ body {
 
 html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+input,
+select,
+textarea,
+button {
+    font: inherit;
+}
+
+/* iOS zooms focused inputs below 16px. Keep form controls readable on mobile. */
+@media (max-width: 767px) {
+    input,
+    select,
+    textarea {
+        font-size: 16px;
+    }
+
+    #mobileMenu {
+        max-height: 70vh;
+        overflow-y: auto;
+    }
 }
 
 /* Gradient Animations */
