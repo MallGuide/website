@@ -12,6 +12,7 @@ body {
 html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
 }
 
 input,
@@ -32,6 +33,59 @@ button {
     #mobileMenu {
         max-height: 70vh;
         overflow-y: auto;
+    }
+
+    html {
+        scroll-padding-top: 4.75rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .demo-pin-label {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    #demo {
+        overflow-x: hidden;
+    }
+
+    .demo-grid > * {
+        min-width: 0;
+    }
+
+    .demo-map-card,
+    .demo-directory-card {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .demo-map-header {
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+
+    .demo-live-badge {
+        margin-left: auto;
+        flex-shrink: 0;
+        padding: 0.4rem 0.75rem;
+    }
+
+    .demo-floor-selector {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.5rem;
+        overflow: visible;
+        padding-bottom: 0;
+    }
+
+    .demo-floor-tab {
+        width: 100%;
+        padding: 0.65rem 0.5rem;
+        font-size: 0.95rem;
+        line-height: 1.2;
+        white-space: normal;
     }
 }
 
