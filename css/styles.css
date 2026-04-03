@@ -33,10 +33,31 @@ button {
     #mobileMenu {
         max-height: 70vh;
         overflow-y: auto;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    #mobileMenu::-webkit-scrollbar {
+        display: none;
     }
 
     html {
         scroll-padding-top: 4.75rem;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    html::-webkit-scrollbar {
+        display: none;
+    }
+
+    body {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    body::-webkit-scrollbar {
+        display: none;
     }
 }
 
