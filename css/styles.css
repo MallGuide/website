@@ -169,22 +169,28 @@ button {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-    width: 10px;
+/* Hide scrollbars globally while keeping scrolling enabled. */
+html,
+body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+    width: 0 !important;
+    height: 0 !important;
+    display: none !important;
 }
 
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #14B8A6 0%, #0EA5E9 100%);
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #0EA5E9;
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track,
+*::-webkit-scrollbar-track,
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-thumb {
+    background: transparent !important;
 }
 
 /* FAQ Accordion */
@@ -248,14 +254,10 @@ button {
 
 /* Keep scrolling enabled on small iOS devices while fully hiding visible scrollbars. */
 @media (max-width: 767px) {
-    ::-webkit-scrollbar {
-        width: 0 !important;
-        height: 0 !important;
-        display: none !important;
-    }
-
-    ::-webkit-scrollbar-track,
-    ::-webkit-scrollbar-thumb {
-        background: transparent !important;
+    html,
+    body,
+    #mobileMenu {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
 }
